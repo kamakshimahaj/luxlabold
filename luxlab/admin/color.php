@@ -1,0 +1,139 @@
+<?php
+include "topbar.php";
+?>
+<title>color</title>
+<?php
+include "sidebar.php";
+?>
+<style type="text/css">
+	.center
+	{background-color:#ECCA9C}
+	</style>
+
+  <?PHP
+  $varcl="";
+  include_once "connection.php";
+if(isset($_POST['btnsub']))
+{
+	$varcl= $_POST['cltype'];
+	$dt= date("y-m-d h:i:s");
+  $sqlins="INSERT INTO tab_color (color_name,active,creation_date)
+VALUES('$varcl','1','$dt')";
+if (mysqli_query($con,$sqlins))
+{
+echo "1 record added";
+}
+else
+{
+  die('Error: ' . mysqli_error($con));
+}
+// mysqli_close($con);
+}
+?>
+        
+<!-- start your design down-->
+
+
+            <div class="page-wrapper">
+
+                <div class="page-body">
+                    <div class="row">
+
+                        <!-- Start Blank Page -->
+
+                        <div class="col-sm-12 text-center">
+                        <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 ">
+    </div>
+
+        <div class="col-sm-8 center ">
+
+          <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-sm-3">
+              </div>
+              
+              <div class="col-sm-6">
+              <h1> TAB COLOR</h1>
+              </div>
+              
+              <div class="col-sm-3">
+              </div>
+            </div>
+
+
+            <div class="row mb-3">
+<div class="col-sm-4">
+<label for="cltype"><h3> COLOR NAME</h3></label>
+</div>
+<div class="col-sm-8">
+<input type="text" class="form-control" id="cltype" name="cltype"
+ placeholder="Enter name of color" required="required">
+</div>
+</div>
+
+
+
+<div class="row mb-3">
+    <div class="col-sm-4">
+        <fieldset class="mb-3">
+            <legend><h3>ACTIVE</h3></legend>
+            <div class="col-sm-4">
+            <div  class="form-check" style="margin-left:550%;margin-top:-60%;">
+               <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option2" checked>
+                <label class="form-check-label">
+                YES
+              </label>
+            </div>
+           </div>
+           <div class="col-sm-8">
+            <div class="form-check" style="margin-top:-23%;margin-left:320%;">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                <label class="form-check-label">
+                NO
+              </label>
+            </div>
+           </div>
+</fieldset>
+</div>
+</div>
+
+<div class="row mb-3">
+<div class="col-sm-12 ">
+<input type="submit" name="btnsub" value="SUBMIT" class="btn btn-danger" />
+</div>
+</div>
+<div class="row mb-3">
+<div class="col-sm-12">
+<!-- <button type="submit" name="btnsub" class="btn btn-success">UPDATE</button> -->
+<a href=" color_view.php">VIEW</a>
+</div>
+</div>
+</form>
+</div>
+<div class="col-sm-2 ">
+</div>
+</div>
+</div>
+                            
+                        </div>
+
+                        <!-- End Blank Page -->
+
+                    </div>
+                </div>
+
+                <div id="styleSelector">
+
+                </div>
+            </div>
+
+
+<!-- end your design up-->
+    
+    
+
+<?php
+include "footer.php";
+?>
